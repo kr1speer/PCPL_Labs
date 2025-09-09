@@ -1,7 +1,7 @@
 import sys
 import math
 
-def get_coef(index, prompt):
+def get_coef(index, prompt) -> float:
     '''
     Читаем коэффициент из командной строки или вводим с клавиатуры
 
@@ -12,17 +12,18 @@ def get_coef(index, prompt):
     Returns:
         float: Коэффициент квадратного уравнения
     '''
+    if len(sys.argv) > index:
+        try:
+            return float(sys.argv[index])
+        except (ValueError, IndexError):
+            print("Ошибка: введите корректное число")
+
     while True:
-            try:
-                if len(sys.argv) > index:
-                    return float(sys.argv[index])
-                else:
-                    return float(input(prompt + "\n"))
-            except ValueError:
-                print("Ошибка: введите корректное число")
-                return float(input(prompt + "\n"))
-            except IndexError:
-                print(prompt)
+        try:
+            return float(input(prompt + "\n"))
+        except ValueError:
+            print("Ошибка: введите корректное число")
+
 
 
 
@@ -45,7 +46,7 @@ def get_roots(a, b, c):
                 root = math.sqrt(-c / b)
                 result.append(root)
                 result.append(-root)
-            return result
+            return list(set(result))
 
 
     D = b*b - 4*a*c
@@ -67,7 +68,7 @@ def get_roots(a, b, c):
             root2 = math.sqrt(Z2)
             result.append(root2)
             result.append(-root2)
-    return result
+    return list(set(result))
 
 
 def main():
@@ -76,6 +77,7 @@ def main():
     b = get_coef(2, 'Введите коэффициент B:')
     c = get_coef(3, 'Введите коэффициент C:')
 
+    print(f"Биквадратное уравнение: {a}x⁴ + {b}x² + {c} = 0")
     roots = get_roots(a,b,c)
 
     if len(roots) == 1 and type(roots[0]) == str:
