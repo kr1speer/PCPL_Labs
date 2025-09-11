@@ -1,7 +1,8 @@
 import sys
 import math
 
-def get_coef(index, prompt) -> float:
+
+def get_coef(index: int, prompt: str) -> float:
     '''
     Читаем коэффициент из командной строки или вводим с клавиатуры
 
@@ -25,12 +26,7 @@ def get_coef(index, prompt) -> float:
             print("Ошибка: введите корректное число")
 
 
-
-
-
-
 def get_roots(a, b, c):
-
     result = []
 
     if a == 0:
@@ -49,8 +45,8 @@ def get_roots(a, b, c):
             return list(set(result))
 
 
-    D = b*b - 4*a*c
-    X = -b / (2.0*a)
+    D = b * b - 4 * a * c
+    X = -b / (2.0 * a)
 
     if D == 0.0 and X >= 0:
         root = math.sqrt(X)
@@ -58,8 +54,8 @@ def get_roots(a, b, c):
         result.append(-root)
     if D > 0.0:
         sqD = math.sqrt(D)
-        Z1 = (-b + sqD) / (2.0*a)
-        Z2 = (-b - sqD) / (2.0*a)
+        Z1 = (-b + sqD) / (2.0 * a)
+        Z2 = (-b - sqD) / (2.0 * a)
         if Z1 >= 0:
             root1 = math.sqrt(Z1)
             result.append(root1)
@@ -72,7 +68,6 @@ def get_roots(a, b, c):
 
 
 def main():
-
     a = get_coef(1, 'Введите коэффициент А:')
     b = get_coef(2, 'Введите коэффициент B:')
     c = get_coef(3, 'Введите коэффициент C:')
