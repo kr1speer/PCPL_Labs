@@ -4,7 +4,7 @@ from lab_python_oop.square import Square
 
 from colorama import Fore
 def main():
-    # Параметры фигур (N = 5 для примера)
+    # Параметры фигур (2 вариант, N = 2)
     N = 2
 
     # Создание фигур
